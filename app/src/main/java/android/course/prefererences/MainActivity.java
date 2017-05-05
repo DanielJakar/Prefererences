@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
     Toolbar toolbar;
     EditText etNote;
     SharedPreferences prefs;
+    int x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         fab = (FloatingActionButton) findViewById(R.id.fab);
         etNote = (EditText) findViewById(R.id.etNote);
         etNote.addTextChangedListener(this);
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
     }
 
     private void save(){
+        x = 10;
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("Note", etNote.getText().toString());
         editor.apply();
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+        save();
     }
 
 
